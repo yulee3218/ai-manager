@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "22958378691",
+    "project_id": "ai-manager-49dff",
+    "storage_bucket": "ai-manager-49dff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22958378691:android:972e11791e5d0572d91c76",
+        "android_client_info": {
+          "package_name": "com.unitsoft.ai_manager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4WlZJzTs-eDi46MIn2cPUk6u_BGKmBSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
