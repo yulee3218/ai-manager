@@ -16,6 +16,15 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+def authProperties = new Properties()
+def authPropertiesFile = rootProject.file("auth_key.properties")
+if (authPropertiesFile.exists()) {
+    authPropertiesFile.withReader("UTF-8") {
+        reader -> authProperties.load(reader)
+    }
+}
+
+
 def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
 if (flutterVersionCode == null) {
     flutterVersionCode = "1"
@@ -24,6 +33,11 @@ if (flutterVersionCode == null) {
 def flutterVersionName = localProperties.getProperty("flutter.versionName")
 if (flutterVersionName == null) {
     flutterVersionName = "1.0"
+}
+
+def kakaoNativeKey = authProperties.getProperty("kakaoNativeKey")
+if (kakaoNativeKey == null) {
+    kakaoNativeKey = "12fc18acd3ddcf51f4ab83cc6e4f49bc"
 }
 
 android {
@@ -41,10 +55,12 @@ android {
         applicationId = "com.unitsoft.ai_manager"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = flutter.minSdkVersion
+//        minSdk = flutter.minSdkVersion
+        minSdk = 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
+        manifestPlaceholders["kakaoNativeKey"] = kakaoNativeKey
     }
 
     buildTypes {

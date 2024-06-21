@@ -1,16 +1,21 @@
+import 'package:ai_manager/core/constant/app_constants.dart';
 import 'package:ai_manager/firebase_options.dart';
+import 'package:ai_manager/src/routing/app_router.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:kakao_flutter_sdk_common/kakao_flutter_sdk_common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-final counterProvider = StateNotifierProvider<String>((ref) => "number");
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  KakaoSdk.init(
+      nativeAppKey: AppConstants.kakaoNativeKey,
+      javaScriptAppKey: AppConstants.kakaoWebKey);
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -20,13 +25,16 @@ class MyApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
+    final goRouter = ref.watch(goRouterProvider);
+
+    return MaterialApp.router(
+      routerConfig: goRouter,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

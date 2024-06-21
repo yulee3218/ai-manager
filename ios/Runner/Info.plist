@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>DFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>DFBundleURLSchemes</key>
+            <array>
+            <!-- kakao login -->
+            <string>12fc18acd3ddcf51f4ab83cc6e4f49bc</string>
+            </array>
+        </dict>
+    </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
